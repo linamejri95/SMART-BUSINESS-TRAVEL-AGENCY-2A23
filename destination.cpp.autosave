@@ -147,7 +147,7 @@ void destination::on_pushButton_14_clicked()
                  im.setPixel(x,y,qr.getModule(x, y) ? black : white );
              ui->qrcode->setPixmap( QPixmap::fromImage(im.scaled(200,200,Qt::KeepAspectRatio,Qt::FastTransformation),Qt::MonoOnly) );
     }
-}
+} 
 
 
 

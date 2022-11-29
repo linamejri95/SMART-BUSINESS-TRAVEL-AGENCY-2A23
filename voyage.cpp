@@ -114,3 +114,50 @@ bool voyage::modifier_voyage(QString code){
     return    query.exec();
 
 }
+QSqlQueryModel * voyage::rechercherCode(QString code)
+{
+    QSqlQueryModel *model= new QSqlQueryModel();
+    QSqlQuery q;
+    q.prepare("select * from voyage where code like '"+code+"%' or destination like '"+code+"%'  ");
+    q.addBindValue("%"+ code +"%");
+    q.exec();
+    model->setQuery(q);
+    return (model);
+}
+QSqlQueryModel * voyage::Triecode()
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    model->setQuery("SELECT * FROM VOYAGE ORDER BY CODE");
+    return model;
+}
+
+
+
+QSqlQueryModel * voyage::Triedest()
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    model->setQuery("SELECT * FROM VOYAGE ORDER BY DEST");
+    return model;
+}
+
+QString voyage:: exporter()
+ {
+    QString text=" PRINT \n " ;
+    QSqlQuery query ;
+    QString i,x,z,a,e;
+    query.exec("select * from voyage ");
+      while (query.next())
+      {
+         i=query.value(0).toString();
+         e=query.value(1).toString();
+         x=query.value(2).toString();
+         z=query.value(3).toString();
+         a=query.value(4).toString();
+
+
+
+        text += "\n CODE : "+i+"\n DEST : "+e+"\n HEBERGEMENT : "+ x+"\n DURE : "+ z+"\n PRIX:"+a+"\n " ;
+     }           return text ;
+ }
+
+

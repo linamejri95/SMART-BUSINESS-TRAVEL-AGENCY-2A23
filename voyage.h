@@ -26,6 +26,12 @@ public:
           QSqlQueryModel* afficher();
        bool supprimer(QString);
        bool modifier_voyage(QString);
+       QSqlQueryModel * rechercherCode(QString);
+       QSqlQueryModel * Triecode();
+      QSqlQueryModel * Triedest();
+      QString exporter();
+
+
 
 private:
      QString code;
