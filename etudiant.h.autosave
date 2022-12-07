@@ -1,0 +1,35 @@
+#ifndef PERSONNEL_H
+#define PERSONNEL_H
+#include <QMainWindow>
+#include <QString>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
+#include <QDate>
+#include <QDateEdit>
+#include <QDebug>
+
+class Personnel
+{
+public:
+    Personnel();
+    Personnel(QString,QString,QString,QString,int);
+    QString getNomPers() {return nom_pers;};
+    QString getPrenomPers() {return prenom_pers;};
+    QString getId() {return id;};
+    QString getFonction() {return fonction;};
+    int  getCinPers(){return CIN_pers;};
+    void set_id(QString) ;
+    void set_prenom(QString) ;
+    void set_nom(QString) ;
+    void set_CIN(int) ;
+    bool ajouter();
+    QSqlQueryModel * afficher();
+    bool supprimer(QString);
+    bool modifier() ;
+
+private:
+    QString nom_pers,prenom_pers,id,fonction;
+    int CIN_pers;
+};
+
+#endif // PERSONNEL_H
